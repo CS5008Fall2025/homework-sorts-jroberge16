@@ -13,7 +13,14 @@
 // Output: The index in an array of the minimum value between a range [start,stop]
 int findMinimum(int *array, int start, int stop)
 {
-    return 0; // modify to return the index of the min value
+    int minIndex = start;
+
+    for (int j=start; j<stop; j++){
+        if (array[j] < array[minIndex]){
+            minIndex = j;
+        }
+    }
+    return minIndex; // modify to return the index of the min value
 }
 
 
@@ -30,7 +37,26 @@ int findMinimum(int *array, int start, int stop)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void selectionSortIntegers(int *array, unsigned int size, int print)
 {
-    // todo: implement selection sort
+    int minIndex;
+    if(print==1){
+        printf("Starting Array: ");
+        printIntArray(array, size);
+    }
+    for(int i=0; i < size; i++ ){
+        // aquiring min index
+        minIndex = findMinimum(array, i, size);
+
+        // Swapping Variables
+        if (minIndex !=i){
+                swap(&array[i], &array[minIndex]);
+            }
+
+        // print array at step
+        if (print==1){
+            printf("Aray at Step %d: ", i);
+            printIntArray(array, size);
+        }
+    }
 }
 
 /***  Code for Insertion Sort ***/
@@ -47,9 +73,34 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
 //  - 'print' tells it to print out after each iteration 
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void insertionSortIntegers(int *array, unsigned int size, int print)
-{
-    // TODO: Implement insertion sort
- 
+{   
+    int j;
+    int i;
+    int key;
+    if(print==1){
+        printf("Starting Array: ");
+        printIntArray(array, size);
+        printf("\n\n");
+
+    }
+    for (i= 1; i<size; i++){
+        key = array[i];
+        j=i;
+        while (j> 0 && array[j-1] > key){
+            array[j] = array[j-1];
+            j = j-1;
+
+            if (print==1){
+                printf("Aray at Step %d.%d: ", i, j);
+                printIntArray(array, size);
+            }
+        }
+        array[j] = key;
+    }
+    if(print==1){
+        printf("\n\nEnding Array: ");
+        printIntArray(array, size);
+    }
 
 }
 
