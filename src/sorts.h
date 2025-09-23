@@ -86,6 +86,10 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
     for (i= 1; i<size; i++){
         key = array[i];
         j=i;
+        if (print==1){
+
+            printf("=== Starting Interation %d ===\n", i);
+        }
         while (j> 0 && array[j-1] > key){
             array[j] = array[j-1];
             j = j-1;
@@ -118,9 +122,35 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
 // Output:   No value is returned, but 'array' should
 //           be modified to store a sorted array of size.
 void bubbleSortIntegers(int *array, unsigned int size, int print)
-{
-    // code generated from lab
+{ 
+int swapped;
+if(print==1){
+    printf("Starting Array: ");
+    printIntArray(array, size);
+    printf("\n");
 
+}
+for (int i=0; i < size-1; i++){
+    swapped = 0;
+    for(int j=0; j < size-i-1; j++){
+        if (array[j] > array[j+1]){
+            swap(&array[j], &array[j+1]);
+            swapped = 1;
+            if (print==1){
+                printf("Array at Step %d.%d: ", i, j);
+                printIntArray(array, size);
+            }
+        }
+    }
+    if (swapped == 0){
+        break;
+    }
+}
+if(print==1){
+    printf("\nEnding Array: ");
+    printIntArray(array, size);
+    printf("\n\n");
+}
 }
 
 // ** You will work on merge sort during the lab on Module 06 ** //
