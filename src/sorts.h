@@ -2,6 +2,8 @@
 #define SORTS_H
 
 #include <stdlib.h>
+#include <string.h>
+
 #include "sort_helper.h"
 
 /*** code for selection sort ****/
@@ -167,7 +169,44 @@ void merge(int arr[], int temp[], int l, int m, int r)
 
     if (l > m || m + 1 > r)
         return;
+    
+    int n1 = m - l + 1;
+    int n2 = r - m;
+    
+    // using the temp memory space that has already ben allocated
+    int *L = temp;
+    int *R = temp + n1;
+    
+    // esentially a for loop
+    memcpy(L, arr + l, sizeof(int) * n1);
+    memcpy(R, arr + m + 1, sizeof(int) * n2);
 
+    // inits
+    int i = 0; int j = 0; int k = l;
+
+    while( i< n1 && j < n2){
+        if (L[i] <= R[j]){
+            arr[k] = L[i];
+            i++;
+        } else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    // copy remaining array
+    while (i < n1){
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    while (j < n2){
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
 
 }
 
@@ -182,7 +221,13 @@ void merge(int arr[], int temp[], int l, int m, int r)
 // Output: No value is returned, but 'array' should be modified to store a sorted array of numbers.
 void merge_sort(int arr[], int temp[], int l, int r)
 {
-   
+
+    if (l < r ){
+        int mid = l + (r-l) / 2;
+        merge_sort(arr, temp, l, mid);
+        merge_sort(arr, temp, mid+1, r);
+        merge(arr, temp, l, mid, r);
+    }
 }
 
 // lab build, merge sort
