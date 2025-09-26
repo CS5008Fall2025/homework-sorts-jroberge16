@@ -323,21 +323,22 @@ Python's sort function relies on the algorithm `Timsort`. `Timsort` is what we c
 
 ##### TimSort Steps:
 1. First we break our array into chunks whihc are called runs. These runs are generally 32 to 64 elements long.
-    1.1 (Optimization) Insertion Only: If the array is of a certain size we just run insertion sort and therefor reduce the overhead of the entire algorithm. 
+    <br>1.1 (Optimization) Insertion Only: If the array is of a certain size we just run insertion sort and therefor reduce the overhead of the entire algorithm.<br><br>
 2. We then sort each run using insertion sort. 
-    2.2 (Optimization) Reverse it: When using insertion sort we identify if the run is in descending order, and if it is we then reverse it.
+    <br>2.2 (Optimization) Reverse it: When using insertion sort we identify if the run is in descending order, and if it is we then reverse it.<br><br>
 3. We then take each chunk and perform merge from merge sort. 
-    3.1 (Optimization) Gallop Mode: This merge sort is adaptive because it will recognize when a particular sub array has been added back to the main array multiple times. When this happens the algorithm "gallops" over items by using binary insertion. This allows us to insert multiple value at once and reduce the number of comparisons on average.
-    3.2 (Optimization) Adaptive Merging: We will also calculate the size of each array and merge arrays that are considerably smaller together.
+    <br>3.1 (Optimization) Gallop Mode: This merge sort is adaptive because it will recognize when a particular sub array has been added back to the main array multiple times. When this happens the algorithm "gallops" over items by using binary insertion. This allows us to insert multiple value at once and reduce the number of comparisons on average.
+    <br>3.2 (Optimization) Adaptive Merging: We will also calculate the size of each array and merge arrays that are considerably smaller together.
 
 `Timsort` is powerful because it is designed to detect patterns within data and then use those patterns to it advantage. 
 [5, 1]
+
 #### Visualize
 Find a graphic / visualization (can be a youtube video) that demonstrates the sort in action. 
-
-
-
-[5, 1]
+* https://www.youtube.com/watch?v=GhP5WbE4GYo&t=3s
+* https://www.youtube.com/watch?v=0Dg41UEK3Io&t=1s
+* https://www.youtube.com/watch?v=NVIjHj-lrT4&t=1s
+[5, 1, 8]
 
 
 #### Big O
@@ -358,7 +359,8 @@ Add your references here. A good reference includes an inline citation, such as 
 4. GeeksforGeeks. (2025c, July 23). When does the worst case of quicksort occur? https://www.geeksforgeeks.org/dsa/when-does-the-worst-case-of-quicksort-occur/ 
 5. KIRUPA. (n.d.). Timsort: A Deep Dive Into the Fastest Sorting Algorithm 😀. YouTube. https://www.youtube.com/watch?v=0Dg41UEK3Io&t=1s 
 7. On the worst-case complexity of Timsort - IGM. (n.d.). https://igm.univ-mlv.fr/~juge/slides/conf/esa2018.pdf 
-6. What is the worst case scenario for quicksort?. Stack Overflow. (2011, January 29). https://stackoverflow.com/questions/4834740/what-is-the-worst-case-scenario-for-quicksort 
+6. What is the worst case scenario for quicksort?. Stack Overflow. (2011, January 29). https://stackoverflow.com/questions/4834740/what-is-the-worst-case-scenario-for-quicksort
+8. Timo Bingmann. (n.d.). Tim Sort. YouTube. https://www.youtube.com/watch?v=NVIjHj-lrT4&t=1s 
 
 
 
