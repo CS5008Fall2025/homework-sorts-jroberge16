@@ -5,23 +5,25 @@ Make sure to go out to at least 100,000 (more are welcome), and you have 10 diff
 
 You are free to write a script to run the program and build your table (then copy that table built into the markdown). If you do that, please include the script into the repo.  Note: merge and quick sorts are going to be explored in the team activity for Module 06. You can start on it now, but welcome to wait.
 
- 
-
 ### Table [^note]
 | N | Bubble | Selection | Insertion | Merge | Quick |
 | :-- | :--: | :--: | :--: | :--: | :--: |
 |100|0.000015|0.000007|0.000003|0.000005|0.000004|
 |600|0.000386|0.000140|0.000111|0.000034|0.000026|
 |1100|0.001087|0.000432|0.000270|0.000067|0.000052|
+|...|...|...|...|...|...|
 |20600|0.448772|0.130043|0.084871|0.001463|0.001233|
 |21100|0.471930|0.135835|0.091166|0.001558|0.001277|
 |21600|0.440764|0.142019|0.091892|0.001615|0.001354|
+|...|...|...|...|...|...|
 |48600|3.038722|0.728326|0.473094|0.003809|0.003337|
 |49100|3.247625|0.732217|0.486210|0.003772|0.003299|
 |49600|3.304235|0.749241|0.486749|0.004007|0.003215|
+|...|...|...|...|...|...|
 |76600|8.483181|1.808503|1.204223|0.006272|0.005416|
 |77100|8.623096|1.845302|1.213143|0.006665|0.005432|
 |77600|8.602854|1.837834|1.227466|0.006512|0.005536|
+|...|...|...|...|...|...|
 |98600|14.343674|2.948584|1.978974|0.008386|0.007370|
 |99100|14.438810|2.977922|1.989524|0.008474|0.007019|
 |99600|14.623122|3.068675|2.029382|0.008457|0.007265|
@@ -37,15 +39,13 @@ Build a line chart using your favorite program. Your X axis will be N increasing
 Include the image in your markdown. As a reminder, you save the image in your repo, and use [image markdown].
 
 ![Algorithum Results](/hw_extra_materials/results.png)
+
 _See Code hw_extra_materials\results.ipynb for graph generation_
-
-
-
 
 ### 2. Analysis
 Looking at the graph and the table, what can you say about the various sorts? Which are the fastest? Which are the slowest? Which are the most consistent? Which are the least consistent? Use this space to reflect in your own words your observations.
 
-looking at the graph we can clearly see there is a big difference between our quadratic sorts and out linnerimthic sorts  (n log(N)). From best to worst we can clearly see the following relationships:
+Looking at the graph, we can clearly see there is a big difference between our quadratic sorts and our linearithmic sorts (n log(n)). From best to worst case, we can find the following relationship
 Best:
 1. Quick -> best
 2. Merge
@@ -53,7 +53,7 @@ Best:
 4. Selection
 5. Bubble -> worst
 
-As for consistentcey we can clearly see that Merge and Quick sorts have the slowest growth rate and therefor are the most consistent given and increasing list size. We can also say that selection and merge sort are the most consistent since they have a none adaptive run time (best, worst and average are the same). Bubble sort is a little bit of a quagmire given how much worse it is compared to the others. I believe the issue is related to the number of `swaps` bubble sort algorithum does. The other quadratic algorithum tend to perform less swaps.
+For consistency, the Merge and Quick sort algorithms have the slowest growth rate, and thus are the most consistent as the number of elements grows. In another way, we can also say that Selection and Merge sort are the _most_ consistent for runtime, since their best, average, and worst cases are the same. Bubble sort also seem to have the most variation in practice. I believe the issue with Bubble sort is related to the number of `swaps` the Bubble sort algorithm performs. The other quadratic algorithms tend to perform fewer swaps and therefore are less costly at each iteration.
 
 
 ### 3. Big O
@@ -67,26 +67,17 @@ Build another table that presents the best, worst, and average case for Bubble, 
 | Merge     | $O(n*log(n))$|$O(n*log(n))$|$O(n*log(n))$
 | Quick     | $O(n*log(n))$| $O(n*log(n))$| $O(n^2)$
 
-
-
-
-
-* https://www.geeksforgeeks.org/dsa/when-does-the-worst-case-of-quicksort-occur/
-* https://stackoverflow.com/questions/4834740/what-is-the-worst-case-scenario-for-quicksort
-* https://www.geeksforgeeks.org/dsa/comparison-among-bubble-sort-selection-sort-and-insertion-sort/
+[2, 3, 4]
 
 #### 3.2 Worst Case
 Provide example of arrays that generate _worst_ case for Bubble, Selection, Insertion, Merge Sorts
 
 Worst Case:
-* Bubble: reverse sorted (5,4,3,2,1). Every element will have to be compared to every other element. 
-* Selection: always runs in O(n^2). We use a for loop and iterate over all elements without an early out option
-* Insertion: reverse sorted (5,4,3,2,1). This means we will have to bring the 1st element to the back of the array which means at every iteration our comparison will be n-1, n-2, ...,2, 1
-* Merge: Any. Merge sort has constant time complexity and does not change given the order of the array.
-* Quick: nLog(n). Picking a pivot which is the min or max of the array.
-
-* https://www.geeksforgeeks.org/dsa/when-does-the-worst-case-of-quicksort-occur/
-* https://stackoverflow.com/questions/4834740/what-is-the-worst-case-scenario-for-quicksort
+* __Bubble__: Reverse sorted `(5,4,3,2,1)`. Every element will have to be compared to every other element.
+* __Selection__: regardless of input, this algorithm always runs in $O(n^2)$ . We use a for loop and iterate over all elements and do not have adaptive out option. 
+* __Insertion__: reverse sorted array for example `(5,4,3,2,1)`. This means we will have move the 1st element to the back of the array resulting in  n-1, n-2, ... 2, 1 comparisons
+* __Merge__: Any array. Merge sort has time complexity does not change given the order of the array.
+[4, 2]
 
 #### 3.3 Best Case
 Provide example of arrays that generate _best_ case for Bubble, Selection, Insertion, Merge Sorts 
@@ -97,18 +88,17 @@ Best Case:
 * Insertion: Pre Sorted (1,2,3,4,5). The while loop can be a constant operation since it will only do one comparison
 * Merge: Any. Merge sort's time complexity does not change given the order of the array.
 * Quick: nLog(n). Picking the correct pivot element IE an element that is not the min nor max of the list. Its best to use a random  index
-
+[4, 2]
 
 #### 3.4 Memory Considerations
 Order the various sorts based on which take up the most memory when sorting to the least memory. You may have to research this, and include the mathematical notation. 
 
 _Best_
-1. Bubble, selection, insertion: these algorithms time complexity can be considered constant O(1). They never create an array or create new variables at every iteration, and use index variables. Therefor the space throughout the sort remains stable and does no grow. 
-2. Quick: on average quick's space complexity is O(log(n)), but given the worst conditions it is O(n) like merge.
-3. Merge: we have to have a temporary array of n. 
+1. _Bubble, Selection, Insertion_: These algorithms’ space complexity can be considered constant, $O(1)$. They never create an additional array or new variables at every iteration, and instead use index variables. Therefore, the space throughout the sort remains stable and does not grow.
+2. _Quick_: On average, Quick sort’s space complexity is $O(\log n)$, but under the worst conditions it can be $O(n)$, similar to Merge. I put it before Merge due to its more favorable variability.
+3. _Merge_: Requires a temporary array of size $n$, and thus resulting in a space complexity of $O(n)$.
 _Worst_
-
-https://www.geeksforgeeks.org/dsa/time-and-space-complexity-analysis-of-quick-sort/
+[2, 3, 4]
 
 
 ### 4. Growth of Functions
@@ -175,7 +165,7 @@ Look up stability as it refers to sorting. In your own words, describe one sort 
 
 A stable algorithm is one that maintains the original order of the elements when sorting. For example lets say we are sorting these tuples by there first element:
 
-_Orginal List:_
+_Original List:_
 (2,"Bob"), (2,"Josh"), (1,"Dave")
 
 _Stable Sort:_
@@ -192,7 +182,7 @@ https://www.geeksforgeeks.org/dsa/stable-and-unstable-sorting-algorithms/
 ### 6.2 When stability is needed?
 Explain in your own words a case in which you will want a stable algorithm over an unstable. Include an example. 
 
-I think this is pretty important when there is a natural order to the data. For example lets say we have a list that we append credit card transaction too when they happen. This list would be naturally be sorted by time. If we were too then sort this list by transaction amount, we would then have a list that is sorted by transaction amount and then time.
+I think this is pretty important when there is a natural order to the data you are dealing with. For example, lets say we have a list that we append credit card transaction too at the time of transaction. This list would be naturally be sorted by time. If we were too then sort this list by transaction amount, we would then have a list that is sorted by transaction amount and then time if we used a stable algorithm.
 
 
 ### 7. Gold Thief
@@ -202,20 +192,23 @@ You are planning a heist to steal a rare coin that weighs 1.0001 ounces. The pro
 #### 7.1 Algorithm
 Describe an algorithm that will help you find the coin. We encourage you to use pseudo-code, but not required.
 
-I believe this problem can be accomplished as divide and conquer algorithm. This can be accomplished with the following steps:
+I believe this problem can be accomplished as divide and conquer algorithm. 
 
-1. split pile of gold in half even halfs. If you are dealing with an odd number of coins pull one out and leave aside -> $Pile_1, Pile_2, ExtraCoin$  
+# Instructions:
+
+1. split pile of gold in two  even halves.
+   1.1 If you are dealing with an odd number of coins pull one out -> $Pile_1, Pile_2, ExtraCoin$  
 2. Weigh Each Pile => $PileWeight_1, PileWeight_2$  
 3. Perform the following checks:  
    3.1 If $PileWeight_1 \gt PileWeight_2$  
    &nbsp;&nbsp;&nbsp;&nbsp;3.1.1 if $size(Pile_1) \gt 1$ start at step one with $Pile_1$  
-   &nbsp;&nbsp;&nbsp;&nbsp;3.1.2 if $size(Pile_1) = 1$ Congratulations you have found the rare coin!  
+   &nbsp;&nbsp;&nbsp;&nbsp;3.1.2 if $size(Pile_1) = 1$ Rare Coin!  
 
    3.2 If $PileWeight_2 \gt PileWeight_1$  
    &nbsp;&nbsp;&nbsp;&nbsp;3.2.1 if $size(Pile_2) \gt 1$ start at step one with $Pile_2$  
-   &nbsp;&nbsp;&nbsp;&nbsp;3.2.2 if $size(Pile_2) = 1$ Congratulations you have found the rare coin!
+   &nbsp;&nbsp;&nbsp;&nbsp;3.2.2 if $size(Pile_2) = 1$ Rare Coin!
 
-   3.3 If $PileWeight_1 == PileWeight_2$ then your $ExtraCoin$ is the rare coin!
+   3.3 If $PileWeight_1 == PileWeight_2$ $ExtraCoin$ is the Rare Coin!
 
 ```c
  SplitPiles(pile, size):
@@ -280,13 +273,13 @@ FindMeSomeRareGold(pile, size)
 #### 7.2 Time Complexity
 
 __Best Case:__
-The best case for this algorithm would be O(1). This means when we perform our splits and weighing action we are immediately able to find our coin on the first try
+The best case for this algorithm would be O(1). This means when we perform our splits and weighing action, we are immediately able to find our coin on the first try
 
 __Average Case:__
-This algorithm is hard to say exactly what the average case would be expect for it being $O(Log(n))$. We know that our recursive calls should reach about half down the recursive tree. Given that position we know this algorithm will be greater than $O(1)$ and less than $O(Log(n))$ given the average case therefor it would be $O(Log(n))$
+It is hard to say exactly what the average case would be for this algorithm. We know that our recursive calls should reach about half way down the recursive tree when compared to the worst case. Given this information, we know this algorithm will be greater than $O(1)$ complexity but less than $O(Log(n))$. We can therefor conclude that the runtime is $O(Log(n))$
 
 __Worst Case:__
-As a worst case this algorithm should run in $O(Log(n))$. We can assume this because we are recursively splitting our piles in half every time, and thus our operations are working on smaller and smaller piles.
+As a worst case this algorithm is $O(Log(n))$. We can assume this because we are recursively splitting our piles in half every time, and thus our number operations would grow at a logarithmic rate.
 
 
 
@@ -326,45 +319,47 @@ int removeElement(int* nums, int numsSize, int val) {
 Sorting algorithms are still being studied today. They often include a statistical analysis of data before sorting. This next question will require some research, as it isn't included in class content. When you call `sort()` or `sorted()` in Python 3.6+, what sort is it using?
 
 #### Description
-Python's sort function relies on the algorithm `Timsort`. `Timsort` is what we call a hybrid algorithm. Every sorting algorithm has benefits and and draw backs and hyrbid algorithms try to maximize the benefits and minimize the cost of each algorithm. Hybrid algorithms accomplish this by  merging multiple algorithms into one. `Timesort` is backed by two algorithms insertion and merge.
+Python's sort function relies on the algorithm `Timsort`. `Timsort` is what we call a hybrid algorithm. Every sorting algorithm has benefits and and draw backs and hybrid algorithms tries to maximize the benefits and minimize the cost of each algorithm. Hybrid algorithms accomplish this by  merging multiple algorithms into one. `Timesort` is backed by two algorithms, insertion and merge. Let's break down the major steps of this algorithm
 
-The steps of `Timsort` are as follows:
-1. First we break our array into chunks called runs. These runs are generally 32 bytes
+##### TimSort Steps:
+1. First we break our array into chunks whihc are called runs. These runs are generally 32 to 64 elements long.
     1.1 (Optimization) Insertion Only: If the array is of a certain size we just run insertion sort and therefor reduce the overhead of the entire algorithm. 
 2. We then sort each run using insertion sort. 
     2.2 (Optimization) Reverse it: When using insertion sort we identify if the run is in descending order, and if it is we then reverse it.
 3. We then take each chunk and perform merge from merge sort. 
-    3.1 (Optimization) Gallop Mode: This merge sort is adaptive because it will recognize when a particular sub array has been added back to the main array multiple time and then perform a binary insertion. This allows us to insert multiple value at once and reduce the number of comparisons on average.
+    3.1 (Optimization) Gallop Mode: This merge sort is adaptive because it will recognize when a particular sub array has been added back to the main array multiple times. When this happens the algorithm "gallops" over items by using binary insertion. This allows us to insert multiple value at once and reduce the number of comparisons on average.
     3.2 (Optimization) Adaptive Merging: We will also calculate the size of each array and merge arrays that are considerably smaller together.
 
 `Timsort` is powerful because it is designed to detect patterns within data and then use those patterns to it advantage. 
-
+[5, 1]
 #### Visualize
 Find a graphic / visualization (can be a youtube video) that demonstrates the sort in action. 
 
-*https://www.google.com/search?sca_esv=6fbc5b85f7533cfa&rlz=1C1ONGR_enUS1180US1180&sxsrf=AE3TifN9ULOZDC62kzfstpaPeI0rd5ufdQ:1758924450721&udm=7&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeuYzzFkfneXafNx6OMdA4MQRJc_t_TQjwHYrzlkIauOKj9nSuujpEIbB1x32lFLEvPT3JmO8mWQjm2X3w-eMKXZ0RUYhz1JSpwmiVqRbYKaSUH5IT0DtjseXr7pWbySQW2IansKYxVko0I4Xq9VSCktKDaAksofpR02O_Zlq1OtpJOB00g&q=tim+sort+visualization&sa=X&sqi=2&ved=2ahUKEwiXt8mYuPePAxWWK1kFHVqfBbEQtKgLegQIFxAB&biw=1920&bih=945&dpr=1#fpstate=ive&vld=cid:be2b9b42,vid:0Dg41UEK3Io,st:0
 
-* https://www.google.com/search?sca_esv=6fbc5b85f7533cfa&rlz=1C1ONGR_enUS1180US1180&sxsrf=AE3TifN9ULOZDC62kzfstpaPeI0rd5ufdQ:1758924450721&udm=7&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeuYzzFkfneXafNx6OMdA4MQRJc_t_TQjwHYrzlkIauOKj9nSuujpEIbB1x32lFLEvPT3JmO8mWQjm2X3w-eMKXZ0RUYhz1JSpwmiVqRbYKaSUH5IT0DtjseXr7pWbySQW2IansKYxVko0I4Xq9VSCktKDaAksofpR02O_Zlq1OtpJOB00g&q=tim+sort+visualization&sa=X&sqi=2&ved=2ahUKEwiXt8mYuPePAxWWK1kFHVqfBbEQtKgLegQIFxAB&biw=1920&bih=945&dpr=1#fpstate=ive&vld=cid:4ae83fab,vid:GhP5WbE4GYo,st:0
 
-* https://www.google.com/search?sca_esv=6fbc5b85f7533cfa&rlz=1C1ONGR_enUS1180US1180&sxsrf=AE3TifN9ULOZDC62kzfstpaPeI0rd5ufdQ:1758924450721&udm=7&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeuYzzFkfneXafNx6OMdA4MQRJc_t_TQjwHYrzlkIauOKj9nSuujpEIbB1x32lFLEvPT3JmO8mWQjm2X3w-eMKXZ0RUYhz1JSpwmiVqRbYKaSUH5IT0DtjseXr7pWbySQW2IansKYxVko0I4Xq9VSCktKDaAksofpR02O_Zlq1OtpJOB00g&q=tim+sort+visualization&sa=X&sqi=2&ved=2ahUKEwiXt8mYuPePAxWWK1kFHVqfBbEQtKgLegQIFxAB&biw=1920&bih=945&dpr=1#fpstate=ive&vld=cid:fc1f44f2,vid:NVIjHj-lrT4,st:0
+[5, 1]
+
 
 #### Big O
 Give the worst and best case time-complexity, and examples that would generate them.
 
-* Best Case: $O(n)$, the array is already sorted (0,1,2,3,4,5)
-* Worst Case: $O(nLog(n))$. 
-
-The worst case for this is tricky and is all dependent on how the array is broken up before the merge step. Specifically, we can say that it is the worst case if each sub array needs to be perform the maximum number of swaps at each merge step. For example let say we have the following runs the at we are merging [0, 2, 4, 6] and [1, 3, 5, 7]. This array will have to make a comparison as each step and thus abstracted out to larger process would result in a time complexity of $O(n*Log(n))$. Merge sort is an adaptive algorithm and given the example array we cannot exploit any natural order within the elements. 
-
-https://igm.univ-mlv.fr/~juge/slides/conf/esa2018.pdf
+* Best Case: $O(n)$, the array is already sorted `(0,1,2,3,4,5)`
+* Worst Case: $O(nLog(n))$. The worst case for this is tricky and is all dependent on how the array is broken up before the merge step. Specifically, we can say that it is the worst case if each sub array needs to be perform the maximum number of swaps at each merge step. For example let say we have the following runs the at we are merging `(0, 2, 4, 6)` and (`1, 3, 5, 7)`. This array will have to make a comparison as each step and thus abstracted out to larger process would result in a time complexity of $O(n*Log(n))$. Merge sort is an adaptive algorithm and given the example array we cannot exploit any natural order within the elements. 
+[7]
 
 <hr>
 
 ## References
 Add your references here. A good reference includes an inline citation, such as [1] , and then down in your references section, you include the full details of the reference. Use [ACM Reference format].
 
-1. Reference info, date, etc.
-2. ...
+1. Geekific. (n.d.). YouTube. https://www.youtube.com/watch?v=GhP5WbE4GYo&t=3s 
+2. GeeksforGeeks. (2025a, July 11). Comparison among bubble sort, selection sort and insertion sort. https://www.geeksforgeeks.org/dsa/comparison-among-bubble-sort-selection-sort-and-insertion-sort/ 
+3. GeeksforGeeks. (2025b, July 23). Time and space complexity analysis of Quick Sort. https://www.geeksforgeeks.org/dsa/time-and-space-complexity-analysis-of-quick-sort/ 
+4. GeeksforGeeks. (2025c, July 23). When does the worst case of quicksort occur? https://www.geeksforgeeks.org/dsa/when-does-the-worst-case-of-quicksort-occur/ 
+5. KIRUPA. (n.d.). Timsort: A Deep Dive Into the Fastest Sorting Algorithm 😀. YouTube. https://www.youtube.com/watch?v=0Dg41UEK3Io&t=1s 
+7. On the worst-case complexity of Timsort - IGM. (n.d.). https://igm.univ-mlv.fr/~juge/slides/conf/esa2018.pdf 
+6. What is the worst case scenario for quicksort?. Stack Overflow. (2011, January 29). https://stackoverflow.com/questions/4834740/what-is-the-worst-case-scenario-for-quicksort 
+
 
 
 
