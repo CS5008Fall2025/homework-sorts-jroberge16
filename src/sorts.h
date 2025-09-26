@@ -80,12 +80,12 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
     int j;
     int i;
     int key;
-    if(print==1){
-        printf("Starting Array: ");
-        printIntArray(array, size);
-        printf("\n\n");
+    // if(print==1){
+    //     printf("Starting Array: ");
+    //     printIntArray(array, size);
+    //     printf("\n\n");
 
-    }
+    // }
     for (i= 1; i<size; i++){
         key = array[i];
         j=i;
