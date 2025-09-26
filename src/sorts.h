@@ -103,13 +103,14 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
             // }
         }
         array[j] = key;
-    }
     if(print==1){
         // printf("\n\nEnding Array: ");
         printIntArray(array, size);
         printf("\n");
 
     }
+    }
+    
 
 }
 
