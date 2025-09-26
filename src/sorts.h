@@ -40,10 +40,10 @@ int findMinimum(int *array, int start, int stop)
 void selectionSortIntegers(int *array, unsigned int size, int print)
 {
     int minIndex;
-    if(print==1){
-        printf("Starting Array: ");
-        printIntArray(array, size);
-    }
+    // if(print==1){
+    //     printf("Starting Array: ");
+    //     printIntArray(array, size);
+    // }
     for(int i=0; i < size; i++ ){
         // aquiring min index
         minIndex = findMinimum(array, i, size);
@@ -55,8 +55,9 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
 
         // print array at step
         if (print==1){
-            printf("Array at Step %d: ", i);
+            // printf("Array at Step %d: ", i);
             printIntArray(array, size);
+            pritnf("\n");
         }
     }
 }
