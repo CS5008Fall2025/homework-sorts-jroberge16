@@ -189,6 +189,8 @@ void merge(int arr[], int temp[], int l, int m, int r)
     // inits
     int i = 0; int j = 0; int k = l;
 
+    // we merge arrays back to main. once we have completed
+    // one array, we copy the rest of the other array
     while( i< n1 && j < n2){
         if (L[i] <= R[j]){
             arr[k] = L[i];
