@@ -89,24 +89,26 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
     for (i= 1; i<size; i++){
         key = array[i];
         j=i;
-        if (print==1){
+        // if (print==1){
 
-            printf("=== Starting Intteration %d ===\n", i);
-        }
+        //     printf("=== Starting Intteration %d ===\n", i);
+        // }
         while (j> 0 && array[j-1] > key){
             array[j] = array[j-1];
             j = j-1;
 
-            if (print==1){
-                printf("Array at Step %d.%d: ", i, j);
-                printIntArray(array, size);
-            }
+            // if (print==1){
+            //     printf("Array at Step %d.%d: ", i, j);
+            //     printIntArray(array, size);
+            // }
         }
         array[j] = key;
     }
     if(print==1){
-        printf("\n\nEnding Array: ");
+        // printf("\n\nEnding Array: ");
         printIntArray(array, size);
+        pritnf("\n");
+
     }
 
 }
@@ -127,16 +129,16 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
 void bubbleSortIntegers(int *array, unsigned int size, int p)
 {
     int swapped = 0;
-    if (p){
-                printf("🚀 Starting Array: \n");
-                printIntArray(array, size); 
-    }
+    // if (p){
+    //             printf("🚀 Starting Array: \n");
+    //             printIntArray(array, size); 
+    // }
     // Going through each value of n
     for(int i = 0; i < size; i++){
-        if (p){
-                printf("\tIntteration %d:\t", i);
-                printIntArray(array, size); 
-            }
+        // if (p){
+        //         printf("\tIntteration %d:\t", i);
+        //         printIntArray(array, size); 
+        //     }
         // Setting swapped to zero and this assume the array is sorted
         swapped = 0;
         // Compare each value of n to n+1 and move the largest values down
@@ -145,10 +147,10 @@ void bubbleSortIntegers(int *array, unsigned int size, int p)
                     swap(&array[j], &array[j+1]);
                     swapped = 1;
                 }
-                if (p){
-                    printf("\t\tStep %d.%d:\t", i, j);
-                    printIntArray(array, size); 
-              }
+            //     if (p){
+            //         printf("\t\tStep %d.%d:\t", i, j);
+            //         printIntArray(array, size); 
+            //   }
         }
         // if we made no swaps then it is sorted
         if (swapped == 0){
@@ -156,8 +158,9 @@ void bubbleSortIntegers(int *array, unsigned int size, int p)
         }
     }
     if (p){
-                printf("🔚 Ending Array: \n");
+                // printf("🔚 Ending Array: \n");
                 printIntArray(array, size); 
+                printf("\n");
     }
 }
 
