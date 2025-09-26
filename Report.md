@@ -277,9 +277,6 @@ FindMeSomeRareGold(pile, size)
 ```
 
 
-
-
-
 #### 7.2 Time Complexity
 
 __Best Case:__
@@ -299,17 +296,67 @@ For both these questions, are you are free to use what you did as the last secti
 
 1. Select one technical interview question (this module or previous) from the [technical interview list](https://github.com/CS5008-khoury/Resources/blob/main/TechInterviewQuestions.md) below and answer it in a few sentences. You can use any resource you like to answer the question.
 
+__Question:__ When would we want an algorithm with a higher time complexity than another faster algorithm?
+__Answer:__
+Choosing an algorithm is always situational and really dependent on the task at hand. _Speed is never the only parameter to consider_. For example, if we want to sort data live, the fast quick and merge sort, may not be the answer given that they are offline algorithms. We Therefor may want to consider algorithms that can work online like insertion sort.
+
+
 2. Select one coding question (this module or previous) from the [coding practice repository](https://github.com/CS5008-khoury/Resources/blob/main/LeetCodePractice.md) and include a c file with that code with your submission. Make sure to add comments on what you learned, and if you compared your solution with others. 
- 
+
+__Problem: Remove Element__
+Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
+
+```c
+int removeElement(int* nums, int numsSize, int val) {
+    // index with current items removed
+    int k = 0;
+    // indexing through the array
+    for (int i=0; i < numsSize; i++){
+        if (nums[i] != val){
+            nums[k] = nums[i];
+            k++;//
+        }
+    }
+    return k;
+}
+```
+
 
 ## Deeper Thinking
-Sorting algorithms are still being studied today. They often include a statistical analysis of data before sorting. This next question will require some research, as it isn't included in class content. When you call `sort()` or `sorted()` in Python 3.6+, what sort is it using? 
+Sorting algorithms are still being studied today. They often include a statistical analysis of data before sorting. This next question will require some research, as it isn't included in class content. When you call `sort()` or `sorted()` in Python 3.6+, what sort is it using?
+
+#### Description
+Python's sort function relies on the algorithm `Timsort`. `Timsort` is what we call a hybrid algorithm. Every sorting algorithm has benefits and and draw backs and hyrbid algorithms try to maximize the benefits and minimize the cost of each algorithm. Hybrid algorithms accomplish this by  merging multiple algorithms into one. `Timesort` is backed by two algorithms insertion and merge.
+
+The steps of `Timsort` are as follows:
+1. First we break our array into chunks called runs. These runs are generally 32 bytes
+    1.1 (Optimization) Insertion Only: If the array is of a certain size we just run insertion sort and therefor reduce the overhead of the entire algorithm. 
+2. We then sort each run using insertion sort. 
+    2.2 (Optimization) Reverse it: When using insertion sort we identify if the run is in descending order, and if it is we then reverse it.
+3. We then take each chunk and perform merge from merge sort. 
+    3.1 (Optimization) Gallop Mode: This merge sort is adaptive because it will recognize when a particular sub array has been added back to the main array multiple time and then perform a binary insertion. This allows us to insert multiple value at once and reduce the number of comparisons on average.
+    3.2 (Optimization) Adaptive Merging: We will also calculate the size of each array and merge arrays that are considerably smaller together.
+
+`Timsort` is powerful because it is designed to detect patterns within data and then use those patterns to it advantage. 
 
 #### Visualize
 Find a graphic / visualization (can be a youtube video) that demonstrates the sort in action. 
 
+*https://www.google.com/search?sca_esv=6fbc5b85f7533cfa&rlz=1C1ONGR_enUS1180US1180&sxsrf=AE3TifN9ULOZDC62kzfstpaPeI0rd5ufdQ:1758924450721&udm=7&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeuYzzFkfneXafNx6OMdA4MQRJc_t_TQjwHYrzlkIauOKj9nSuujpEIbB1x32lFLEvPT3JmO8mWQjm2X3w-eMKXZ0RUYhz1JSpwmiVqRbYKaSUH5IT0DtjseXr7pWbySQW2IansKYxVko0I4Xq9VSCktKDaAksofpR02O_Zlq1OtpJOB00g&q=tim+sort+visualization&sa=X&sqi=2&ved=2ahUKEwiXt8mYuPePAxWWK1kFHVqfBbEQtKgLegQIFxAB&biw=1920&bih=945&dpr=1#fpstate=ive&vld=cid:be2b9b42,vid:0Dg41UEK3Io,st:0
+
+* https://www.google.com/search?sca_esv=6fbc5b85f7533cfa&rlz=1C1ONGR_enUS1180US1180&sxsrf=AE3TifN9ULOZDC62kzfstpaPeI0rd5ufdQ:1758924450721&udm=7&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeuYzzFkfneXafNx6OMdA4MQRJc_t_TQjwHYrzlkIauOKj9nSuujpEIbB1x32lFLEvPT3JmO8mWQjm2X3w-eMKXZ0RUYhz1JSpwmiVqRbYKaSUH5IT0DtjseXr7pWbySQW2IansKYxVko0I4Xq9VSCktKDaAksofpR02O_Zlq1OtpJOB00g&q=tim+sort+visualization&sa=X&sqi=2&ved=2ahUKEwiXt8mYuPePAxWWK1kFHVqfBbEQtKgLegQIFxAB&biw=1920&bih=945&dpr=1#fpstate=ive&vld=cid:4ae83fab,vid:GhP5WbE4GYo,st:0
+
+* https://www.google.com/search?sca_esv=6fbc5b85f7533cfa&rlz=1C1ONGR_enUS1180US1180&sxsrf=AE3TifN9ULOZDC62kzfstpaPeI0rd5ufdQ:1758924450721&udm=7&fbs=AIIjpHxU7SXXniUZfeShr2fp4giZ1Y6MJ25_tmWITc7uy4KIeuYzzFkfneXafNx6OMdA4MQRJc_t_TQjwHYrzlkIauOKj9nSuujpEIbB1x32lFLEvPT3JmO8mWQjm2X3w-eMKXZ0RUYhz1JSpwmiVqRbYKaSUH5IT0DtjseXr7pWbySQW2IansKYxVko0I4Xq9VSCktKDaAksofpR02O_Zlq1OtpJOB00g&q=tim+sort+visualization&sa=X&sqi=2&ved=2ahUKEwiXt8mYuPePAxWWK1kFHVqfBbEQtKgLegQIFxAB&biw=1920&bih=945&dpr=1#fpstate=ive&vld=cid:fc1f44f2,vid:NVIjHj-lrT4,st:0
+
 #### Big O
-Give the worst and best case time-complexity, and examples that would generate them. 
+Give the worst and best case time-complexity, and examples that would generate them.
+
+* Best Case: $O(n)$, the array is already sorted (0,1,2,3,4,5)
+* Worst Case: $O(nLog(n))$. 
+
+The worst case for this is tricky and is all dependent on how the array is broken up before the merge step. Specifically, we can say that it is the worst case if each sub array needs to be perform the maximum number of swaps at each merge step. For example let say we have the following runs the at we are merging [0, 2, 4, 6] and [1, 3, 5, 7]. This array will have to make a comparison as each step and thus abstracted out to larger process would result in a time complexity of $O(n*Log(n))$. Merge sort is an adaptive algorithm and given the example array we cannot exploit any natural order within the elements. 
+
+https://igm.univ-mlv.fr/~juge/slides/conf/esa2018.pdf
 
 <hr>
 
