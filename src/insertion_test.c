@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
     int dataset5[] = {100, 201, 52, 3223, 24, 55, 623, 75, 8523, -9, 150};
     int dataset6[] = {-1, 1, 2, -3, 4, 5, -6, 7, 8, -9, 10};
     int dataset7[] = {};
+    int dataset8[] = {1};
 
 
     int print = 1;
@@ -38,6 +39,8 @@ int main(int argc, char *argv[])
     insertionSortIntegers(dataset6, 11, print);
     printf("\n");
     insertionSortIntegers(dataset7, 0, print);
+    printf("\n");
+    insertionSortIntegers(dataset8, 1, print);
 
 
     // make sure to add your own tests, such what happens when the dataset is {}?

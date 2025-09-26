@@ -30,6 +30,6 @@ int test_swap(void){
 int main(void){
     int passing = 0;
     // swap
-    printf("🧪🧪 Running Sort Helper Tests 🧪🧪\n");
+    printf("🧪 Running Sort Helper Tests 🧪\n");
     passing += test_swap();
 }

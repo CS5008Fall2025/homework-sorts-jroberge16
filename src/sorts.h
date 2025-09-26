@@ -123,36 +123,41 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
 // param(3) 'print' tells it to print out after each iteration.
 // Output:   No value is returned, but 'array' should
 //           be modified to store a sorted array of size.
-void bubbleSortIntegers(int *array, unsigned int size, int print)
-{ 
-int swapped;
-if(print==1){
-    printf("Starting Array: ");
-    printIntArray(array, size);
-    printf("\n");
-
-}
-for (int i=0; i < size-1; i++){
-    swapped = 0;
-    for(int j=0; j < size-i-1; j++){
-        if (array[j] > array[j+1]){
-            swap(&array[j], &array[j+1]);
-            swapped = 1;
-            if (print==1){
-                printf("Array at Step %d.%d: ", i, j);
-                printIntArray(array, size);
+void bubbleSortIntegers(int *array, unsigned int size, int p)
+{
+    int swapped = 0;
+    if (p){
+                printf("🚀 Starting Array: \n");
+                printIntArray(array, size); 
+    }
+    // Going through each value of n
+    for(int i = 0; i < size; i++){
+        if (p){
+                printf("\tIntteration %d:\t", i);
+                printIntArray(array, size); 
             }
+        // Setting swapped to zero and this assume the array is sorted
+        swapped = 0;
+        // Compare each value of n to n+1 and move the largest values down
+        for(int j =0; j < size - i - 1; j++){
+                if(array[j] > array[j+1]){
+                    swap(&array[j], &array[j+1]);
+                    swapped = 1;
+                }
+                if (p){
+                    printf("\t\tStep %d.%d:\t", i, j);
+                    printIntArray(array, size); 
+              }
+        }
+        // if we made no swaps then it is sorted
+        if (swapped == 0){
+            break;
         }
     }
-    if (swapped == 0){
-        break;
+    if (p){
+                printf("🔚 Ending Array: \n");
+                printIntArray(array, size); 
     }
-}
-if(print==1){
-    printf("\nEnding Array: ");
-    printIntArray(array, size);
-    printf("\n\n");
-}
 }
 
 // ** You will work on merge sort during the lab on Module 06 ** //
