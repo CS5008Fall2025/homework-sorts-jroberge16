@@ -57,7 +57,7 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
         if (print==1){
             // printf("Array at Step %d: ", i);
             printIntArray(array, size);
-            pritnf("\n");
+            printf("\n");
         }
     }
 }
@@ -107,7 +107,7 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
     if(print==1){
         // printf("\n\nEnding Array: ");
         printIntArray(array, size);
-        pritnf("\n");
+        printf("\n");
 
     }
 
