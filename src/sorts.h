@@ -55,7 +55,7 @@ void selectionSortIntegers(int *array, unsigned int size, int print)
 
         // print array at step
         if (print==1){
-            printf("Aray at Step %d: ", i);
+            printf("Array at Step %d: ", i);
             printIntArray(array, size);
         }
     }
@@ -90,14 +90,14 @@ void insertionSortIntegers(int *array, unsigned int size, int print)
         j=i;
         if (print==1){
 
-            printf("=== Starting Interation %d ===\n", i);
+            printf("=== Starting Intteration %d ===\n", i);
         }
         while (j> 0 && array[j-1] > key){
             array[j] = array[j-1];
             j = j-1;
 
             if (print==1){
-                printf("Aray at Step %d.%d: ", i, j);
+                printf("Array at Step %d.%d: ", i, j);
                 printIntArray(array, size);
             }
         }
